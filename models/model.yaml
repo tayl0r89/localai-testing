@@ -1,0 +1,15 @@
+name: test-model
+f16: true
+threads: 11
+gpu_layers: 90
+parameters:
+  # Model file name
+  model: ggml-openllama.bin
+  top_p: 80
+  top_k: 0.9
+  temperature: 0.1
+usage: |
+  curl http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{
+      "model": "test-model",
+      "messages": [{"role": "user", "content": "How are you doing?", "temperature": 0.1}]
+  }'
